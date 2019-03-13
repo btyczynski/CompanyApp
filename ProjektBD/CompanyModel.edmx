@@ -1,0 +1,1194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CompanyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Street" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Adr" Type="int" Nullable="false" />
+          <Property Name="Namee" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Composition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Team" Type="int" Nullable="false" />
+          <Property Name="ID_Emp" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Computers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Emp" Type="int" Nullable="false" />
+          <Property Name="Destination" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Adr" Type="int" Nullable="false" />
+          <Property Name="First_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Last_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Birth" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_Team" Type="int" Nullable="false" />
+          <Property Name="ID_Company" Type="int" Nullable="false" />
+          <Property Name="Namee" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Descriptionn" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Budget" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Active" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Salary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Emp" Type="int" Nullable="false" />
+          <Property Name="Payment" Type="float" Nullable="false" />
+          <Property Name="Monthh" Type="int" Nullable="false" />
+          <Property Name="Yearr" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Project" Type="int" Nullable="false" />
+          <Property Name="ID_Emp" Type="int" Nullable="false" />
+          <Property Name="Namee" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Descriptionn" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Namee" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DBCompany.dbo.R_EmpCom' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="R_EmpCom">
+          <Key>
+            <PropertyRef Name="First_name" />
+            <PropertyRef Name="Last_name" />
+            <PropertyRef Name="Computer" />
+            <PropertyRef Name="Destination" />
+          </Key>
+          <Property Name="First_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Last_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Computer" Type="int" Nullable="false" />
+          <Property Name="Destination" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DBCompany.dbo.R_EmpInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="R_EmpInfo">
+          <Key>
+            <PropertyRef Name="First_name" />
+            <PropertyRef Name="Last_name" />
+            <PropertyRef Name="Birth" />
+            <PropertyRef Name="Street" />
+            <PropertyRef Name="Number" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Country" />
+          </Key>
+          <Property Name="First_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Last_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Birth" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Street" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DBCompany.dbo.R_EmpSal' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="R_EmpSal">
+          <Key>
+            <PropertyRef Name="First_name" />
+            <PropertyRef Name="Last_name" />
+            <PropertyRef Name="Birth" />
+            <PropertyRef Name="Street" />
+            <PropertyRef Name="Number" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Month" />
+            <PropertyRef Name="Payment" />
+            <PropertyRef Name="Year" />
+          </Key>
+          <Property Name="First_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Last_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Birth" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Street" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Month" Type="int" Nullable="false" />
+          <Property Name="Payment" Type="float" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DBCompany.dbo.V_CityCount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_CityCount">
+          <Key>
+            <PropertyRef Name="City" />
+          </Key>
+          <Property Name="City" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <Association Name="FK__Project__ID_Comp__5DCAEF64">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="ID_Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Project__ID_Team__5CD6CB2B">
+          <End Role="Team" Type="Self.Team" Multiplicity="1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="ID_Team" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Task__ID_Emp__619B8048">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="ID_Emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Task__ID_Project__60A75C0F">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="ID_Project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdresEmploye">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="ID_Adr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComAdr">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="ID_Adr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComEmp">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Composition" Type="Self.Composition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Composition">
+              <PropertyRef Name="ID_Emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompEmploye">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Computers" Type="Self.Computers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Computers">
+              <PropertyRef Name="ID_Emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComTeam">
+          <End Role="Team" Type="Self.Team" Multiplicity="1" />
+          <End Role="Composition" Type="Self.Composition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Composition">
+              <PropertyRef Name="ID_Team" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalEmploye">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Salary">
+              <PropertyRef Name="ID_Emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DeleteAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteComposition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteComputer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteTask" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteTeam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="st" Type="varchar" Mode="In" />
+          <Parameter Name="nr" Type="int" Mode="In" />
+          <Parameter Name="co" Type="varchar" Mode="In" />
+          <Parameter Name="ci" Type="varchar" Mode="In" />
+          <Parameter Name="con" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_a" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertComposition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_e" Type="int" Mode="In" />
+          <Parameter Name="id_t" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertComputer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_e" Type="int" Mode="In" />
+          <Parameter Name="des" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_a" Type="int" Mode="In" />
+          <Parameter Name="fn" Type="varchar" Mode="In" />
+          <Parameter Name="ln" Type="varchar" Mode="In" />
+          <Parameter Name="br" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_t" Type="int" Mode="In" />
+          <Parameter Name="id_c" Type="int" Mode="In" />
+          <Parameter Name="at" Type="int" Mode="In" />
+          <Parameter Name="des" Type="varchar" Mode="In" />
+          <Parameter Name="na" Type="varchar" Mode="In" />
+          <Parameter Name="bg" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_e" Type="int" Mode="In" />
+          <Parameter Name="py" Type="varchar" Mode="In" />
+          <Parameter Name="yr" Type="int" Mode="In" />
+          <Parameter Name="mt" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertTask" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_p" Type="int" Mode="In" />
+          <Parameter Name="id_e" Type="int" Mode="In" />
+          <Parameter Name="st" Type="int" Mode="In" />
+          <Parameter Name="des" Type="varchar" Mode="In" />
+          <Parameter Name="na" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertTeam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="st" Type="varchar" Mode="In" />
+          <Parameter Name="nr" Type="int" Mode="In" />
+          <Parameter Name="co" Type="varchar" Mode="In" />
+          <Parameter Name="ci" Type="varchar" Mode="In" />
+          <Parameter Name="con" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="id_a" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateComposition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="id_e" Type="int" Mode="In" />
+          <Parameter Name="id_t" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateComputer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="id_emp" Type="int" Mode="In" />
+          <Parameter Name="des" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="id_a" Type="int" Mode="In" />
+          <Parameter Name="fn" Type="varchar" Mode="In" />
+          <Parameter Name="ln" Type="varchar" Mode="In" />
+          <Parameter Name="br" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="id_t" Type="int" Mode="In" />
+          <Parameter Name="id_c" Type="int" Mode="In" />
+          <Parameter Name="at" Type="int" Mode="In" />
+          <Parameter Name="des" Type="varchar" Mode="In" />
+          <Parameter Name="na" Type="varchar" Mode="In" />
+          <Parameter Name="bg" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="id_e" Type="int" Mode="In" />
+          <Parameter Name="py" Type="varchar" Mode="In" />
+          <Parameter Name="yr" Type="int" Mode="In" />
+          <Parameter Name="mt" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateTask" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="id_p" Type="int" Mode="In" />
+          <Parameter Name="id_e" Type="int" Mode="In" />
+          <Parameter Name="st" Type="int" Mode="In" />
+          <Parameter Name="des" Type="varchar" Mode="In" />
+          <Parameter Name="na" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateTeam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="CompanyModelStoreContainer">
+          <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Composition" EntityType="Self.Composition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Computers" EntityType="Self.Computers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Salary" EntityType="Self.Salary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_EmpCom" EntityType="Self.R_EmpCom" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [R_EmpCom].[First_name] AS [First_name], 
+    [R_EmpCom].[Last_name] AS [Last_name], 
+    [R_EmpCom].[Computer] AS [Computer], 
+    [R_EmpCom].[Destination] AS [Destination]
+    FROM [dbo].[R_EmpCom] AS [R_EmpCom]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="R_EmpInfo" EntityType="Self.R_EmpInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [R_EmpInfo].[First_name] AS [First_name], 
+    [R_EmpInfo].[Last_name] AS [Last_name], 
+    [R_EmpInfo].[Birth] AS [Birth], 
+    [R_EmpInfo].[Street] AS [Street], 
+    [R_EmpInfo].[Number] AS [Number], 
+    [R_EmpInfo].[Code] AS [Code], 
+    [R_EmpInfo].[City] AS [City], 
+    [R_EmpInfo].[Country] AS [Country]
+    FROM [dbo].[R_EmpInfo] AS [R_EmpInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="R_EmpSal" EntityType="Self.R_EmpSal" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [R_EmpSal].[First_name] AS [First_name], 
+    [R_EmpSal].[Last_name] AS [Last_name], 
+    [R_EmpSal].[Birth] AS [Birth], 
+    [R_EmpSal].[Street] AS [Street], 
+    [R_EmpSal].[Number] AS [Number], 
+    [R_EmpSal].[Code] AS [Code], 
+    [R_EmpSal].[City] AS [City], 
+    [R_EmpSal].[Country] AS [Country], 
+    [R_EmpSal].[Month] AS [Month], 
+    [R_EmpSal].[Payment] AS [Payment], 
+    [R_EmpSal].[Year] AS [Year]
+    FROM [dbo].[R_EmpSal] AS [R_EmpSal]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_CityCount" EntityType="Self.V_CityCount" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_CityCount].[City] AS [City], 
+    [V_CityCount].[Quantity] AS [Quantity]
+    FROM [dbo].[V_CityCount] AS [V_CityCount]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Project__ID_Comp__5DCAEF64" Association="Self.FK__Project__ID_Comp__5DCAEF64">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Project__ID_Team__5CD6CB2B" Association="Self.FK__Project__ID_Team__5CD6CB2B">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Task__ID_Emp__619B8048" Association="Self.FK__Task__ID_Emp__619B8048">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Task__ID_Project__60A75C0F" Association="Self.FK__Task__ID_Project__60A75C0F">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdresEmploye" Association="Self.FK_AdresEmploye">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComAdr" Association="Self.FK_ComAdr">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComEmp" Association="Self.FK_ComEmp">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Composition" EntitySet="Composition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompEmploye" Association="Self.FK_CompEmploye">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Computers" EntitySet="Computers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComTeam" Association="Self.FK_ComTeam">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Composition" EntitySet="Composition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalEmploye" Association="Self.FK_SalEmploye">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Salary" EntitySet="Salary" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CompanyModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="CompanyModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="CompanyModel.Address" />
+          <EntitySet Name="Computers" EntityType="CompanyModel.Computer" />
+          <EntitySet Name="Employees" EntityType="CompanyModel.Employee" />
+          <AssociationSet Name="FK_AdresEmploye" Association="CompanyModel.FK_AdresEmploye">
+            <End Role="Address1" EntitySet="Addresses" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompEmploye" Association="CompanyModel.FK_CompEmploye">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Computer" EntitySet="Computers" />
+          </AssociationSet>
+          <EntitySet Name="V_CityCount" EntityType="CompanyModel.V_CityCount" />
+          <FunctionImport Name="DeleteAddress">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertAddress">
+            <Parameter Name="st" Mode="In" Type="String" />
+            <Parameter Name="nr" Mode="In" Type="Int32" />
+            <Parameter Name="co" Mode="In" Type="String" />
+            <Parameter Name="ci" Mode="In" Type="String" />
+            <Parameter Name="con" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateAddress">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="st" Mode="In" Type="String" />
+            <Parameter Name="nr" Mode="In" Type="Int32" />
+            <Parameter Name="co" Mode="In" Type="String" />
+            <Parameter Name="ci" Mode="In" Type="String" />
+            <Parameter Name="con" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Companies" EntityType="CompanyModel.Company" />
+          <EntitySet Name="Compositions" EntityType="CompanyModel.Composition" />
+          <EntitySet Name="Projects" EntityType="CompanyModel.Project" />
+          <EntitySet Name="Salaries" EntityType="CompanyModel.Salary" />
+          <EntitySet Name="Tasks" EntityType="CompanyModel.Task" />
+          <EntitySet Name="Teams" EntityType="CompanyModel.Team" />
+          <AssociationSet Name="FK_ComAdr1" Association="CompanyModel.FK_ComAdr1">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Company1" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Project__ID_Comp__5DCAEF641" Association="CompanyModel.FK__Project__ID_Comp__5DCAEF641">
+            <End Role="Company1" EntitySet="Companies" />
+            <End Role="Project1" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComEmp1" Association="CompanyModel.FK_ComEmp1">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Composition1" EntitySet="Compositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComTeam1" Association="CompanyModel.FK_ComTeam1">
+            <End Role="Team1" EntitySet="Teams" />
+            <End Role="Composition1" EntitySet="Compositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Task__ID_Emp__619B80481" Association="CompanyModel.FK__Task__ID_Emp__619B80481">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Task1" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalEmploye1" Association="CompanyModel.FK_SalEmploye1">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Salary1" EntitySet="Salaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Project__ID_Team__5CD6CB2B1" Association="CompanyModel.FK__Project__ID_Team__5CD6CB2B1">
+            <End Role="Team1" EntitySet="Teams" />
+            <End Role="Project1" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Task__ID_Project__60A75C0F1" Association="CompanyModel.FK__Task__ID_Project__60A75C0F1">
+            <End Role="Project1" EntitySet="Projects" />
+            <End Role="Task1" EntitySet="Tasks" />
+          </AssociationSet>
+          <EntitySet Name="R_EmpCom" EntityType="CompanyModel.R_EmpCom" />
+          <EntitySet Name="R_EmpInfo" EntityType="CompanyModel.R_EmpInfo" />
+          <EntitySet Name="R_EmpSal" EntityType="CompanyModel.R_EmpSal" />
+          <FunctionImport Name="DeleteCompany">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteComputer">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteEmployee">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteSalary">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteTeam">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertCompany">
+            <Parameter Name="id_a" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertComputer">
+            <Parameter Name="id_e" Mode="In" Type="Int32" />
+            <Parameter Name="des" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertEmployee">
+            <Parameter Name="id_a" Mode="In" Type="Int32" />
+            <Parameter Name="fn" Mode="In" Type="String" />
+            <Parameter Name="ln" Mode="In" Type="String" />
+            <Parameter Name="br" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertSalary">
+            <Parameter Name="id_e" Mode="In" Type="Int32" />
+            <Parameter Name="py" Mode="In" Type="String" />
+            <Parameter Name="yr" Mode="In" Type="Int32" />
+            <Parameter Name="mt" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertTeam">
+          <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateCompany">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id_a" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateComputer">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id_emp" Mode="In" Type="Int32" />
+            <Parameter Name="des" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateEmployee">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id_a" Mode="In" Type="Int32" />
+            <Parameter Name="fn" Mode="In" Type="String" />
+            <Parameter Name="ln" Mode="In" Type="String" />
+            <Parameter Name="br" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateSalary">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id_e" Mode="In" Type="Int32" />
+            <Parameter Name="py" Mode="In" Type="String" />
+            <Parameter Name="yr" Mode="In" Type="Int32" />
+            <Parameter Name="mt" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateTeam">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteComposition">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteProject">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteTask">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertComposition">
+            <Parameter Name="id_e" Mode="In" Type="Int32" />
+            <Parameter Name="id_t" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertProject">
+            <Parameter Name="id_t" Mode="In" Type="Int32" />
+            <Parameter Name="id_c" Mode="In" Type="Int32" />
+            <Parameter Name="at" Mode="In" Type="Int32" />
+            <Parameter Name="des" Mode="In" Type="String" />
+            <Parameter Name="na" Mode="In" Type="String" />
+            <Parameter Name="bg" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertTask">
+            <Parameter Name="id_p" Mode="In" Type="Int32" />
+            <Parameter Name="id_e" Mode="In" Type="Int32" />
+            <Parameter Name="st" Mode="In" Type="Int32" />
+            <Parameter Name="des" Mode="In" Type="String" />
+            <Parameter Name="na" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateComposition">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id_e" Mode="In" Type="Int32" />
+            <Parameter Name="id_t" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateProject">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id_t" Mode="In" Type="Int32" />
+            <Parameter Name="id_c" Mode="In" Type="Int32" />
+            <Parameter Name="at" Mode="In" Type="Int32" />
+            <Parameter Name="des" Mode="In" Type="String" />
+            <Parameter Name="na" Mode="In" Type="String" />
+            <Parameter Name="bg" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateTask">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id_p" Mode="In" Type="Int32" />
+            <Parameter Name="id_e" Mode="In" Type="Int32" />
+            <Parameter Name="st" Mode="In" Type="Int32" />
+            <Parameter Name="des" Mode="In" Type="String" />
+            <Parameter Name="na" Mode="In" Type="String" />
+          </FunctionImport>
+          </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employees" Relationship="CompanyModel.FK_AdresEmploye" FromRole="Address1" ToRole="Employee" />
+          <NavigationProperty Name="Companies" Relationship="CompanyModel.FK_ComAdr1" FromRole="Address" ToRole="Company1" />
+        </EntityType>
+        <EntityType Name="Computer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Emp" Type="Int32" Nullable="false" />
+          <Property Name="Destination" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="CompanyModel.FK_CompEmploye" FromRole="Computer" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Adr" Type="Int32" Nullable="false" />
+          <Property Name="First_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Last_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Birth" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Address" Relationship="CompanyModel.FK_AdresEmploye" FromRole="Employee" ToRole="Address1" />
+          <NavigationProperty Name="Computers" Relationship="CompanyModel.FK_CompEmploye" FromRole="Employee" ToRole="Computer" />
+          <NavigationProperty Name="Compositions" Relationship="CompanyModel.FK_ComEmp1" FromRole="Employee" ToRole="Composition1" />
+          <NavigationProperty Name="Tasks" Relationship="CompanyModel.FK__Task__ID_Emp__619B80481" FromRole="Employee" ToRole="Task1" />
+          <NavigationProperty Name="Salaries" Relationship="CompanyModel.FK_SalEmploye1" FromRole="Employee" ToRole="Salary1" />
+        </EntityType>
+        <Association Name="FK_AdresEmploye">
+          <End Type="CompanyModel.Address" Role="Address1" Multiplicity="1" />
+          <End Type="CompanyModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ID_Adr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompEmploye">
+          <End Type="CompanyModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="CompanyModel.Computer" Role="Computer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Computer">
+              <PropertyRef Name="ID_Emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="V_CityCount">
+          <Key>
+            <PropertyRef Name="City" />
+          </Key>
+          <Property Name="City" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Adr" Type="Int32" Nullable="false" />
+          <Property Name="Namee" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Address" Relationship="CompanyModel.FK_ComAdr1" FromRole="Company1" ToRole="Address" />
+          <NavigationProperty Name="Projects" Relationship="CompanyModel.FK__Project__ID_Comp__5DCAEF641" FromRole="Company1" ToRole="Project1" />
+        </EntityType>
+        <EntityType Name="Composition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Team" Type="Int32" Nullable="false" />
+          <Property Name="ID_Emp" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="CompanyModel.FK_ComEmp1" FromRole="Composition1" ToRole="Employee" />
+          <NavigationProperty Name="Team" Relationship="CompanyModel.FK_ComTeam1" FromRole="Composition1" ToRole="Team1" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_Team" Type="Int32" Nullable="false" />
+          <Property Name="ID_Company" Type="Int32" Nullable="false" />
+          <Property Name="Namee" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Descriptionn" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Budget" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="CompanyModel.FK__Project__ID_Comp__5DCAEF641" FromRole="Project1" ToRole="Company1" />
+          <NavigationProperty Name="Team" Relationship="CompanyModel.FK__Project__ID_Team__5CD6CB2B1" FromRole="Project1" ToRole="Team1" />
+          <NavigationProperty Name="Tasks" Relationship="CompanyModel.FK__Task__ID_Project__60A75C0F1" FromRole="Project1" ToRole="Task1" />
+        </EntityType>
+        <EntityType Name="Salary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Emp" Type="Int32" Nullable="false" />
+          <Property Name="Payment" Type="Double" Nullable="false" />
+          <Property Name="Monthh" Type="Int32" Nullable="false" />
+          <Property Name="Yearr" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="CompanyModel.FK_SalEmploye1" FromRole="Salary1" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Project" Type="Int32" Nullable="false" />
+          <Property Name="ID_Emp" Type="Int32" Nullable="false" />
+          <Property Name="Namee" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Descriptionn" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="CompanyModel.FK__Task__ID_Emp__619B80481" FromRole="Task1" ToRole="Employee" />
+          <NavigationProperty Name="Project" Relationship="CompanyModel.FK__Task__ID_Project__60A75C0F1" FromRole="Task1" ToRole="Project1" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Namee" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Compositions" Relationship="CompanyModel.FK_ComTeam1" FromRole="Team1" ToRole="Composition1" />
+          <NavigationProperty Name="Projects" Relationship="CompanyModel.FK__Project__ID_Team__5CD6CB2B1" FromRole="Team1" ToRole="Project1" />
+        </EntityType>
+        <Association Name="FK_ComAdr1">
+          <End Type="CompanyModel.Address" Role="Address" Multiplicity="1" />
+          <End Type="CompanyModel.Company" Role="Company1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Company1">
+              <PropertyRef Name="ID_Adr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Project__ID_Comp__5DCAEF641">
+          <End Type="CompanyModel.Company" Role="Company1" Multiplicity="1" />
+          <End Type="CompanyModel.Project" Role="Project1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Project1">
+              <PropertyRef Name="ID_Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComEmp1">
+          <End Type="CompanyModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="CompanyModel.Composition" Role="Composition1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Composition1">
+              <PropertyRef Name="ID_Emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComTeam1">
+          <End Type="CompanyModel.Team" Role="Team1" Multiplicity="1" />
+          <End Type="CompanyModel.Composition" Role="Composition1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Composition1">
+              <PropertyRef Name="ID_Team" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Task__ID_Emp__619B80481">
+          <End Type="CompanyModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="CompanyModel.Task" Role="Task1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Task1">
+              <PropertyRef Name="ID_Emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalEmploye1">
+          <End Type="CompanyModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="CompanyModel.Salary" Role="Salary1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Salary1">
+              <PropertyRef Name="ID_Emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Project__ID_Team__5CD6CB2B1">
+          <End Type="CompanyModel.Team" Role="Team1" Multiplicity="1" />
+          <End Type="CompanyModel.Project" Role="Project1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Project1">
+              <PropertyRef Name="ID_Team" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Task__ID_Project__60A75C0F1">
+          <End Type="CompanyModel.Project" Role="Project1" Multiplicity="1" />
+          <End Type="CompanyModel.Task" Role="Task1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Task1">
+              <PropertyRef Name="ID_Project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="R_EmpCom">
+          <Key>
+            <PropertyRef Name="First_name" />
+            <PropertyRef Name="Last_name" />
+            <PropertyRef Name="Computer" />
+            <PropertyRef Name="Destination" />
+          </Key>
+          <Property Name="First_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Last_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Computer" Type="Int32" Nullable="false" />
+          <Property Name="Destination" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="R_EmpInfo">
+          <Key>
+            <PropertyRef Name="First_name" />
+            <PropertyRef Name="Last_name" />
+            <PropertyRef Name="Birth" />
+            <PropertyRef Name="Street" />
+            <PropertyRef Name="Number" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Country" />
+          </Key>
+          <Property Name="First_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Last_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Birth" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="R_EmpSal">
+          <Key>
+            <PropertyRef Name="First_name" />
+            <PropertyRef Name="Last_name" />
+            <PropertyRef Name="Birth" />
+            <PropertyRef Name="Street" />
+            <PropertyRef Name="Number" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Month" />
+            <PropertyRef Name="Payment" />
+            <PropertyRef Name="Year" />
+          </Key>
+          <Property Name="First_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Last_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Birth" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Month" Type="Int32" Nullable="false" />
+          <Property Name="Payment" Type="Double" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CompanyModelStoreContainer" CdmEntityContainer="CompanyModelContainer">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="IsTypeOf(CompanyModel.Address)">
+        <MappingFragment StoreEntitySet="Addresses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Computers">
+      <EntityTypeMapping TypeName="IsTypeOf(CompanyModel.Computer)">
+        <MappingFragment StoreEntitySet="Computers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_Emp" ColumnName="ID_Emp" />
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="IsTypeOf(CompanyModel.Employee)">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_Adr" ColumnName="ID_Adr" />
+          <ScalarProperty Name="First_name" ColumnName="First_name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Birth" ColumnName="Birth" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <EntitySetMapping Name="V_CityCount">
+            <EntityTypeMapping TypeName="CompanyModel.V_CityCount">
+              <MappingFragment StoreEntitySet="V_CityCount">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteAddress" FunctionName="CompanyModel.Store.DeleteAddress" />
+          <FunctionImportMapping FunctionImportName="InsertAddress" FunctionName="CompanyModel.Store.InsertAddress" />
+          <FunctionImportMapping FunctionImportName="UpdateAddress" FunctionName="CompanyModel.Store.UpdateAddress" />
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="CompanyModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="Namee" ColumnName="Namee" />
+                <ScalarProperty Name="ID_Adr" ColumnName="ID_Adr" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Compositions">
+            <EntityTypeMapping TypeName="CompanyModel.Composition">
+              <MappingFragment StoreEntitySet="Composition">
+                <ScalarProperty Name="ID_Emp" ColumnName="ID_Emp" />
+                <ScalarProperty Name="ID_Team" ColumnName="ID_Team" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="CompanyModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="Descriptionn" ColumnName="Descriptionn" />
+                <ScalarProperty Name="Namee" ColumnName="Namee" />
+                <ScalarProperty Name="ID_Company" ColumnName="ID_Company" />
+                <ScalarProperty Name="ID_Team" ColumnName="ID_Team" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salaries">
+            <EntityTypeMapping TypeName="CompanyModel.Salary">
+              <MappingFragment StoreEntitySet="Salary">
+                <ScalarProperty Name="Yearr" ColumnName="Yearr" />
+                <ScalarProperty Name="Monthh" ColumnName="Monthh" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="ID_Emp" ColumnName="ID_Emp" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tasks">
+            <EntityTypeMapping TypeName="CompanyModel.Task">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Descriptionn" ColumnName="Descriptionn" />
+                <ScalarProperty Name="Namee" ColumnName="Namee" />
+                <ScalarProperty Name="ID_Emp" ColumnName="ID_Emp" />
+                <ScalarProperty Name="ID_Project" ColumnName="ID_Project" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="CompanyModel.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="Namee" ColumnName="Namee" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_EmpCom">
+            <EntityTypeMapping TypeName="CompanyModel.R_EmpCom">
+              <MappingFragment StoreEntitySet="R_EmpCom">
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="Computer" ColumnName="Computer" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="First_name" ColumnName="First_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_EmpInfo">
+            <EntityTypeMapping TypeName="CompanyModel.R_EmpInfo">
+              <MappingFragment StoreEntitySet="R_EmpInfo">
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Birth" ColumnName="Birth" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="First_name" ColumnName="First_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_EmpSal">
+            <EntityTypeMapping TypeName="CompanyModel.R_EmpSal">
+              <MappingFragment StoreEntitySet="R_EmpSal">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Birth" ColumnName="Birth" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="First_name" ColumnName="First_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteCompany" FunctionName="CompanyModel.Store.DeleteCompany" />
+          <FunctionImportMapping FunctionImportName="DeleteComputer" FunctionName="CompanyModel.Store.DeleteComputer" />
+          <FunctionImportMapping FunctionImportName="DeleteEmployee" FunctionName="CompanyModel.Store.DeleteEmployee" />
+          <FunctionImportMapping FunctionImportName="DeleteSalary" FunctionName="CompanyModel.Store.DeleteSalary" />
+          <FunctionImportMapping FunctionImportName="DeleteTeam" FunctionName="CompanyModel.Store.DeleteTeam" />
+          <FunctionImportMapping FunctionImportName="InsertCompany" FunctionName="CompanyModel.Store.InsertCompany" />
+          <FunctionImportMapping FunctionImportName="InsertComputer" FunctionName="CompanyModel.Store.InsertComputer" />
+          <FunctionImportMapping FunctionImportName="InsertEmployee" FunctionName="CompanyModel.Store.InsertEmployee" />
+          <FunctionImportMapping FunctionImportName="InsertSalary" FunctionName="CompanyModel.Store.InsertSalary" />
+          <FunctionImportMapping FunctionImportName="InsertTeam" FunctionName="CompanyModel.Store.InsertTeam" />
+          <FunctionImportMapping FunctionImportName="UpdateCompany" FunctionName="CompanyModel.Store.UpdateCompany" />
+          <FunctionImportMapping FunctionImportName="UpdateComputer" FunctionName="CompanyModel.Store.UpdateComputer" />
+          <FunctionImportMapping FunctionImportName="UpdateEmployee" FunctionName="CompanyModel.Store.UpdateEmployee" />
+          <FunctionImportMapping FunctionImportName="UpdateSalary" FunctionName="CompanyModel.Store.UpdateSalary" />
+          <FunctionImportMapping FunctionImportName="UpdateTeam" FunctionName="CompanyModel.Store.UpdateTeam" />
+          <FunctionImportMapping FunctionImportName="DeleteComposition" FunctionName="CompanyModel.Store.DeleteComposition" />
+          <FunctionImportMapping FunctionImportName="DeleteProject" FunctionName="CompanyModel.Store.DeleteProject" />
+          <FunctionImportMapping FunctionImportName="DeleteTask" FunctionName="CompanyModel.Store.DeleteTask" />
+          <FunctionImportMapping FunctionImportName="InsertComposition" FunctionName="CompanyModel.Store.InsertComposition" />
+          <FunctionImportMapping FunctionImportName="InsertProject" FunctionName="CompanyModel.Store.InsertProject" />
+          <FunctionImportMapping FunctionImportName="InsertTask" FunctionName="CompanyModel.Store.InsertTask" />
+          <FunctionImportMapping FunctionImportName="UpdateComposition" FunctionName="CompanyModel.Store.UpdateComposition" />
+          <FunctionImportMapping FunctionImportName="UpdateProject" FunctionName="CompanyModel.Store.UpdateProject" />
+          <FunctionImportMapping FunctionImportName="UpdateTask" FunctionName="CompanyModel.Store.UpdateTask" />
+    </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

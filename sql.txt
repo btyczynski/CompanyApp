@@ -1,0 +1,377 @@
+create procedure InsertEmployee
+@id_a int,
+@fn varchar(255),
+@ln varchar(255),
+@br varchar(255)
+as
+if @id_a is null
+begin
+	RAISERROR ('Nie poprawny adres',16,1)
+	return
+end
+insert into Employees(ID_Adr,First_name,Last_name,Birth)
+values(@id_a,@fn,@ln,@br)
+
+------------------------------------
+
+create procedure DeleteEmployee
+@id int
+as
+IF EXISTS (Select * FROM Employees WHERE ID=@id)
+BEGIN
+Delete from Employees Where ID = @id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+------------------------------------
+
+create procedure UpdateEmployee
+@id int,
+@id_a int,
+@fn varchar(255),
+@ln varchar(255),
+@br varchar(255)
+as
+IF EXISTS (Select * FROM Employees WHERE ID=@id)
+BEGIN
+UPDATE Employees SET First_name=@fn, Last_name=@ln, Birth=@br, ID_Adr=@id_a
+WHERE
+id=@id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+------------------------------------
+
+create procedure InsertComputer
+@id_e int,
+@des varchar(255)
+as
+insert into Computers(ID_Emp,Destination)
+values(@id_e,@des)
+
+------------------------------------
+
+create procedure DeleteComputer
+@id int
+as
+IF EXISTS (Select * FROM Computers WHERE ID=@id)
+BEGIN
+Delete from Computers Where ID = @id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+------------------------------------
+
+create procedure UpdateComputer
+@id int,
+@id_emp int,
+@des varchar(255)
+as
+IF EXISTS (Select * FROM Computers WHERE ID=@id)
+BEGIN
+UPDATE Computers SET ID_Emp=@id_emp, Destination=@des
+WHERE
+id=@id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+------------------------------------
+
+create procedure InsertTeam
+@name varchar(255)
+as
+insert into Team(Namee)
+values(@name)
+
+------------------------------------
+
+create procedure DeleteTeam
+@id int
+as
+IF EXISTS (Select * FROM Team WHERE ID=@id)
+BEGIN
+Delete from Team Where ID = @id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+------------------------------------
+
+
+create procedure UpdateTeam
+@id int,
+@name varchar(255)
+as
+IF EXISTS (Select * FROM Team WHERE ID=@id)
+BEGIN
+UPDATE Team SET Namee=@name
+WHERE
+id=@id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+------------------------------------
+
+create procedure InsertCompany
+@id_a int,
+@name varchar(255)
+as
+insert into Company(ID,ID_Adr,Namee)
+values(@id,@id_a,@name)
+
+------------------------------------
+
+create procedure DeleteCompany
+@id int
+as
+IF EXISTS (Select * FROM Company WHERE ID=@id)
+BEGIN
+Delete from Company Where ID = @id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+
+------------------------------------
+
+create procedure UpdateCompany
+@id int,
+@id_a int,
+@name varchar(255)
+as
+IF EXISTS (Select * FROM Company WHERE ID=@id)
+BEGIN
+UPDATE Company SET ID_Adr=@id_a, Namee=@name
+WHERE
+id=@id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+------------------------------------
+
+create procedure DeleteSalary
+@id int
+as
+IF EXISTS (Select * FROM Salary WHERE ID=@id)
+BEGIN
+Delete from Salary Where ID = @id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+------------------------------------
+
+create procedure InsertSalary
+@id_e int,
+@py varchar(255),
+@yr int,
+@mt int
+as
+if @id_e is null
+begin
+	RAISERROR ('Nie poprawny pracownik',16,1)
+	return
+end
+insert into Salary(ID_Emp,Payment,Monthh,Yearr)
+values(@id_e,@py,@yr,@mt)
+
+------------------------------------
+
+create procedure UpdateSalary
+@id int,
+@id_e int,
+@py varchar(255),
+@yr int,
+@mt int
+as
+IF EXISTS (Select * FROM Salary WHERE ID=@id)
+BEGIN
+UPDATE Salary SET ID_Emp=@id_e, Payment=@py, Monthh=@mt, Yearr=@yr
+WHERE
+id=@id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+
+------------------------------------
+
+create procedure InsertComposition
+@id_e int,
+@id_t int
+as
+if @id_e is null or @id_t is null
+begin
+	RAISERROR ('Nie poprawny dane',16,1)
+	return
+end
+insert into Composition(ID_Emp,ID_Team)
+values(@id_e,@id_t)
+
+------------------------------------
+
+create procedure DeleteComposition
+@id int
+as
+IF EXISTS (Select * FROM Composition WHERE ID=@id)
+BEGIN
+Delete from Composition Where ID = @id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+------------------------------------
+
+create procedure UpdateComposition
+@id int,
+@id_e int,
+@id_t int
+as
+IF EXISTS (Select * FROM Composition WHERE ID=@id)
+BEGIN
+UPDATE Composition SET ID_Emp=@id_e, ID_Team=@id_t
+WHERE
+id=@id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+------------------------------------
+
+create procedure InsertTask
+@id_p int,
+@id_e int,
+@st int,
+@des varchar(255),
+@na varchar(255)
+as
+if @id_p is null or @id_e is null
+begin
+	RAISERROR ('Nie poprawne dane',16,1)
+	return
+end
+insert into Task(ID_Emp,ID_Project,Descriptionn,Namee,Status)
+values(@id_e,@id_e,@des,@na,@st)
+
+------------------------------------
+
+create procedure DeleteTask
+@id int
+as
+IF EXISTS (Select * FROM Task WHERE ID=@id)
+BEGIN
+Delete from Task Where ID = @id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+------------------------------------
+
+create procedure UpdateTask
+@id int,
+@id_p int,
+@id_e int,
+@st int,
+@des varchar(255),
+@na varchar(255)
+as
+IF EXISTS (Select * FROM Task WHERE ID=@id)
+BEGIN
+UPDATE Task SET ID_Emp=@id_e, ID_Project=@id_e, Status=@st, Descriptionn=@des, Namee=@na 
+WHERE
+id=@id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+------------------------------------
+
+create procedure InsertProject
+@id_t int,
+@id_c int,
+@at int,
+@des varchar(255),
+@na varchar(255),
+@bg varchar(255)
+as
+if @id_t is null or @id_c is null
+begin
+	RAISERROR ('Nie poprawne dane',16,1)
+	return
+end
+insert into Project(ID_Team,ID_Company,Namee,Descriptionn,Budget,Active)
+values(@id_t,@id_c,@na,@des,@bg,@at)
+
+------------------------------------
+
+create procedure DeleteProject
+@id int
+as
+IF EXISTS (Select * FROM Project WHERE ID=@id)
+BEGIN
+Delete from Project Where ID = @id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+------------------------------------
+
+create procedure UpdateProject
+@id int,
+@id_t int,
+@id_c int,
+@at int,
+@des varchar(255),
+@na varchar(255),
+@bg varchar(255)
+as
+IF EXISTS (Select * FROM Project WHERE ID=@id)
+BEGIN
+UPDATE Project SET ID_Company=@id_c, ID_Team=@id_t, Active=@at, Descriptionn=@des, Namee=@na, Budget=@bg 
+WHERE
+id=@id
+END
+ELSE
+	RAISERROR ('Nie ma takiego idetyfikatora' ,16,1)
+	return
+
+---Raporty---
+
+CREATE VIEW R_EmpCom AS
+SELECT e.First_name, e.Last_name, c.ID, c.Destination
+FROM Employees e JOIN Computers c ON e.ID = c.ID_Emp
+
+CREATE VIEW R_EmpInfo AS
+SELECT e.First_name, e.Last_name, e.Birth ,a.Street,a.Number,a.Code,a.City,a.Country
+FROM Employees e JOIN Addresses a ON e.ID_Adr = a.ID
+
+CREATE VIEW R_EmpSal AS
+SELECT e.First_name, e.Last_name, e.Birth ,a.Street,a.Number,a.Code,a.City,a.Country, s.Monthh AS Month, s.Payment, s.Yearr AS Year
+FROM Employees e 
+JOIN Addresses a ON e.ID_Adr = a.ID
+JOIN Salary s ON s.ID_Emp = e.ID
+
+
+
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="857c2dfddedd4272b96319767d5b509f" Name="CompanyDBDiagram" ZoomLevel="74" >
+        <EntityTypeShape EntityType="CompanyModel.Address" Width="1.5" PointX="1.875" PointY="6.875" />
+        <EntityTypeShape EntityType="CompanyModel.Computer" Width="1.5" PointX="6.875" PointY="0.5" />
+        <EntityTypeShape EntityType="CompanyModel.Employee" Width="1.5" PointX="1.875" PointY="2.75" />
+        <AssociationConnector Association="CompanyModel.FK_AdresEmploye" />
+        <AssociationConnector Association="CompanyModel.FK_CompEmploye" />
+        <EntityTypeShape EntityType="CompanyModel.V_CityCount" Width="1.5" PointX="15" PointY="5.125" />
+        <EntityTypeShape EntityType="CompanyModel.Company" Width="1.5" PointX="4.875" PointY="11.25" />
+        <EntityTypeShape EntityType="CompanyModel.Composition" Width="1.5" PointX="6.25" PointY="5" />
+        <EntityTypeShape EntityType="CompanyModel.Project" Width="1.5" PointX="10.75" PointY="10.5" />
+        <EntityTypeShape EntityType="CompanyModel.Salary" Width="1.5" PointX="4.875" PointY="0.5" />
+        <EntityTypeShape EntityType="CompanyModel.Task" Width="1.5" PointX="11.875" PointY="3.125" />
+        <EntityTypeShape EntityType="CompanyModel.Team" Width="1.5" PointX="7.5" PointY="8.125" />
+        <AssociationConnector Association="CompanyModel.FK_ComAdr1" />
+        <AssociationConnector Association="CompanyModel.FK__Project__ID_Comp__5DCAEF641" />
+        <AssociationConnector Association="CompanyModel.FK_ComEmp1" />
+        <AssociationConnector Association="CompanyModel.FK_ComTeam1" />
+        <AssociationConnector Association="CompanyModel.FK__Task__ID_Emp__619B80481" />
+        <AssociationConnector Association="CompanyModel.FK_SalEmploye1" />
+        <AssociationConnector Association="CompanyModel.FK__Project__ID_Team__5CD6CB2B1" />
+        <AssociationConnector Association="CompanyModel.FK__Task__ID_Project__60A75C0F1" />
+        <EntityTypeShape EntityType="CompanyModel.R_EmpCom" Width="1.5" PointX="15" PointY="6.875" />
+        <EntityTypeShape EntityType="CompanyModel.R_EmpInfo" Width="1.5" PointX="15" PointY="2.125" />
+        <EntityTypeShape EntityType="CompanyModel.R_EmpSal" Width="1.5" PointX="14.875" PointY="9.125" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
